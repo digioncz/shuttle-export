@@ -391,6 +391,7 @@ class Shuttle_DBConn {
 class Shuttle_DBConn_Mysql extends Shuttle_DBConn {
 	function connect() {
 		$this->connection = @mysql_connect($this->host, $this->username, $this->password);
+        mysql_set_charset("utf8", $this->connection); // podpora pro utf8
 		if (!$this->connection) {
 			throw new Shuttle_Exception("Couldn't connect to the database: " . mysql_error());
 		}
